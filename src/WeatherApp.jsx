@@ -19,9 +19,7 @@ export const WeatherApp = () => {
         }
     };
 
-    useEffect(() => {
-        fetchWeatherData();
-    }, []);
+
 
     const handleCityChange = (e) => {
         setCity(e.target.value);
