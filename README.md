@@ -9,9 +9,10 @@ Antes de comenzar, asegúrate de tener instalado Node.js y NPM en tu sistema. Ad
 ## Paso 1: Configuración inicial
 
 Asegúrate de tener un proyecto de React configurado y los archivos necesarios en tu repositorio. También necesitarás importar los siguientes módulos y archivos:
-
+```
     import { useState, useEffect } from 'react';
     import './styles/weatherStyles.css';
+```
 
 El código anterior importa los módulos `useState` y `useEffect` de React, así como el archivo CSS para los estilos de la aplicación.
 
@@ -19,8 +20,10 @@ El código anterior importa los módulos `useState` y `useEffect` de React, así
 
 Dentro del componente `WeatherApp`, se definen dos estados utilizando el hook `useState`:
 
+```
     const [weatherData, setWeatherData] = useState(null);
     const [city, setCity] = useState('');
+```
 
 -   `weatherData` es el estado que almacenará los datos del clima obtenidos de la API. Inicialmente se establece como `null`.
 -   `city` es el estado que almacenará el nombre de la ciudad ingresado por el usuario. Inicialmente se establece como una cadena vacía.
@@ -29,9 +32,11 @@ Dentro del componente `WeatherApp`, se definen dos estados utilizando el hook `u
 
 A continuación, se definen algunas variables y constantes necesarias para la aplicación:
 
+```
     let urlBase = 'https://api.openweathermap.org/data/2.5/weather';
     let api_key = 'YOUR_API_KEY';
     let difKelvin = 273.15;
+```
 
 -   `urlBase` es la URL base de la API de OpenWeatherMap que se utilizará para realizar la solicitud de datos del clima.
 -   `api_key` es tu clave de API de OpenWeatherMap. Asegúrate de reemplazarla con tu propia clave.
@@ -41,6 +46,7 @@ A continuación, se definen algunas variables y constantes necesarias para la ap
 
 El siguiente bloque de código define la función `fetchWeatherData`, que se utiliza para obtener los datos del clima de la API de OpenWeatherMap:
 
+```
     const fetchWeatherData = async () => {
         try {
             const response = await fetch(`${urlBase}?q=${city}&appid=${api_key}`);
@@ -50,6 +56,7 @@ El siguiente bloque de código define la función `fetchWeatherData`, que se uti
             console.error('Error fetching weather data:', error);
         }
     };
+```
 
 -   La función `fetchWeatherData` realiza una solicitud HTTP GET a la API de OpenWeatherMap utilizando la URL construida con la ciudad ingresada por el usuario y la clave de API.
 -   Luego, se convierte la respuesta en formato JSON utilizando `response.json()` y se actualiza el estado `weatherData` con los datos obtenidos.
@@ -68,10 +75,12 @@ La función `handleCityChange` se utiliza para actualizar el estado `city` con e
 
 ### Envío del formulario
 
+```
     const handleSubmit = (e) => {
         e.preventDefault();
         fetchWeatherData();
     };
+```
 
 La función `handleSubmit` se llama cuando se envía el formulario. Previene el comportamiento de envío predeterminado del navegador utilizando `e.preventDefault()` y luego llama a la función `fetchWeatherData` para obtener los datos del clima de la ciudad ingresada por el usuario.
 
@@ -79,6 +88,7 @@ La función `handleSubmit` se llama cuando se envía el formulario. Previene el 
 
 El último bloque de código dentro del componente `WeatherApp` se encarga de renderizar la interfaz de usuario de la aplicación:
 
+```
     return (
         <div className="container">
             <h1>Aplicación de Clima</h1>
@@ -96,6 +106,8 @@ El último bloque de código dentro del componente `WeatherApp` se encarga de re
             )}
         </div>
     );
+
+```
 
 -   Se utiliza una estructura de elementos HTML para mostrar la interfaz de usuario de la aplicación.
 -   El título principal de la aplicación se muestra con `<h1>`.
